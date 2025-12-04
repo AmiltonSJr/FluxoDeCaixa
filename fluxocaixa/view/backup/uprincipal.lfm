@@ -1,0 +1,111 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 257
+  Height = 345
+  Top = 250
+  Width = 543
+  Caption = 'Sistema Fluxo de Caixa'
+  ClientHeight = 345
+  ClientWidth = 543
+  LCLVersion = '4.4.0.0'
+  OnCreate = FormCreate
+  object pnpEsquerda: TPanel
+    Left = 0
+    Height = 345
+    Top = 0
+    Width = 112
+    Align = alLeft
+    BevelOuter = bvNone
+    ClientHeight = 345
+    ClientWidth = 112
+    Color = clHighlight
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object btnCONTAS: TSpeedButton
+      Left = 16
+      Height = 30
+      Top = 80
+      Width = 82
+      Caption = 'Contas'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -13
+      Font.Name = '@Malgun Gothic Semilight'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object btnPLANOS: TSpeedButton
+      Left = 16
+      Height = 30
+      Top = 120
+      Width = 82
+      Caption = 'Planos'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -13
+      Font.Name = '@Malgun Gothic Semilight'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object btnLCTO: TSpeedButton
+      Left = 16
+      Height = 30
+      Top = 160
+      Width = 82
+      Caption = 'Lançamentos'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -11
+      Font.Name = '@Malgun Gothic Semilight'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object btnSAIR: TSpeedButton
+      Left = 16
+      Height = 30
+      Top = 296
+      Width = 82
+      Caption = 'Sair'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -13
+      Font.Name = '@Malgun Gothic Semilight'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+      OnClick = btnSAIRClick
+    end
+    object btnCFG: TSpeedButton
+      Left = 16
+      Height = 30
+      Top = 256
+      Width = 82
+      Caption = 'Configuração'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -11
+      Font.Name = '@Malgun Gothic Semilight'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+      OnClick = btnCFGClick
+    end
+  end
+  object Label1: TLabel
+    Left = 216
+    Height = 33
+    Top = 8
+    Width = 213
+    Caption = 'Fluxo de Caixa'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -27
+    Font.Name = 'Showcard Gothic'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object Shape1: TShape
+    Left = 112
+    Height = 1
+    Top = 48
+    Width = 431
+  end
+end
