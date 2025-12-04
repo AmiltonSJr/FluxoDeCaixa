@@ -1,0 +1,156 @@
+object frmconfigurabanco: Tfrmconfigurabanco
+  Left = 257
+  Height = 351
+  Top = 250
+  Width = 543
+  Caption = 'Configura Banco'
+  ClientHeight = 351
+  ClientWidth = 543
+  Position = poMainFormCenter
+  LCLVersion = '4.4.0.0'
+  OnShow = FormShow
+  object Label1: TLabel
+    Left = 168
+    Height = 33
+    Top = 8
+    Width = 244
+    Caption = 'Configura Banco'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -27
+    Font.Name = 'Showcard Gothic'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object Shape1: TShape
+    Left = 0
+    Height = 2
+    Top = 47
+    Width = 543
+  end
+  object btnSALVA: TSpeedButton
+    Left = 320
+    Height = 30
+    Top = 288
+    Width = 82
+    Caption = 'Salvar'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -11
+    Font.Name = '@Malgun Gothic Semilight'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    OnClick = btnSALVAClick
+  end
+  object btnCANCELA: TSpeedButton
+    Left = 424
+    Height = 30
+    Top = 288
+    Width = 82
+    Caption = 'Cancelar'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -11
+    Font.Name = '@Malgun Gothic Semilight'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 32
+    Height = 21
+    Top = 96
+    Width = 42
+    Caption = 'Banco'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 32
+    Height = 21
+    Top = 168
+    Width = 59
+    Caption = 'Servidor'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 32
+    Height = 21
+    Top = 232
+    Width = 36
+    Caption = 'Porta'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 184
+    Height = 21
+    Top = 96
+    Width = 54
+    Caption = 'Usuário'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 184
+    Height = 21
+    Top = 168
+    Width = 43
+    Caption = 'Senha'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object edtBANCO: TEdit
+    Left = 32
+    Height = 23
+    Top = 120
+    Width = 104
+    TabOrder = 0
+  end
+  object edtSERVER: TEdit
+    Left = 32
+    Height = 23
+    Top = 192
+    Width = 104
+    TabOrder = 1
+  end
+  object edtPORTA: TEdit
+    Left = 32
+    Height = 23
+    Top = 256
+    Width = 64
+    NumbersOnly = True
+    TabOrder = 2
+  end
+  object edtUSER: TEdit
+    Left = 184
+    Height = 23
+    Top = 120
+    Width = 104
+    TabOrder = 3
+  end
+  object edtSENHA: TEdit
+    Left = 184
+    Height = 23
+    Top = 192
+    Width = 104
+    EchoMode = emPassword
+    PasswordChar = '*'
+    TabOrder = 4
+  end
+end
