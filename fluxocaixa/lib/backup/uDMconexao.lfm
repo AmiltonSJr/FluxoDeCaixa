@@ -1,0 +1,17 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 150
+  HorizontalOffset = 257
+  VerticalOffset = 250
+  Width = 150
+  object ZConnection1: TZConnection
+    ControlsCodePage = cCP_UTF8
+    AfterConnect = ZConnection1AfterConnect
+    DisableSavepoints = False
+    Port = 0
+    Protocol = 'mysql-5'
+    LibraryLocation = 'C:\xampp\mysql\bin\libmysql.dll'
+    Left = 32
+    Top = 16
+  end
+end

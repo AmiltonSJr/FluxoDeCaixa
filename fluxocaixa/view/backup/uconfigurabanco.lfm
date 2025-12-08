@@ -1,16 +1,16 @@
 object frmconfigurabanco: Tfrmconfigurabanco
   Left = 257
-  Height = 351
+  Height = 340
   Top = 250
-  Width = 543
+  Width = 424
   Caption = 'Configura Banco'
-  ClientHeight = 351
-  ClientWidth = 543
+  ClientHeight = 340
+  ClientWidth = 424
   Position = poMainFormCenter
   LCLVersion = '4.4.0.0'
   OnShow = FormShow
   object Label1: TLabel
-    Left = 168
+    Left = 80
     Height = 33
     Top = 8
     Width = 244
@@ -24,14 +24,14 @@ object frmconfigurabanco: Tfrmconfigurabanco
   end
   object Shape1: TShape
     Left = 0
-    Height = 2
-    Top = 47
-    Width = 543
+    Height = 3
+    Top = 46
+    Width = 423
   end
   object btnSALVA: TSpeedButton
-    Left = 320
+    Left = 184
     Height = 30
-    Top = 288
+    Top = 249
     Width = 82
     Caption = 'Salvar'
     Font.CharSet = ANSI_CHARSET
@@ -43,9 +43,9 @@ object frmconfigurabanco: Tfrmconfigurabanco
     OnClick = btnSALVAClick
   end
   object btnCANCELA: TSpeedButton
-    Left = 424
+    Left = 296
     Height = 30
-    Top = 288
+    Top = 248
     Width = 82
     Caption = 'Cancelar'
     Font.CharSet = ANSI_CHARSET

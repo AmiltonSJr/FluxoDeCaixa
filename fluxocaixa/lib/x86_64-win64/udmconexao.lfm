@@ -1,0 +1,17 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 150
+  HorizontalOffset = 257
+  VerticalOffset = 250
+  Width = 150
+  object ZConnection1: TZConnection
+    ControlsCodePage = cCP_UTF8
+    AfterConnect = ZConnection1AfterConnect
+    DisableSavepoints = False
+    Port = 0
+    Protocol = 'mariadb-10'
+    LibraryLocation = 'C:\Program Files\MariaDB 12.1\lib\libmariadb.dll'
+    Left = 32
+    Top = 16
+  end
+end

@@ -1,0 +1,16 @@
+object TabGlobal: TTabGlobal
+  OldCreateOrder = False
+  Height = 150
+  HorizontalOffset = 257
+  VerticalOffset = 250
+  Width = 150
+  object conexao: TZConnection
+    ControlsCodePage = cCP_UTF8
+    BeforeConnect = conexaoBeforeConnect
+    DisableSavepoints = False
+    Port = 0
+    Protocol = 'mariadb-5'
+    Left = 64
+    Top = 56
+  end
+end

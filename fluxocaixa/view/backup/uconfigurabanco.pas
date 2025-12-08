@@ -31,7 +31,7 @@ type
     procedure FormShow(Sender: TObject);
   private
     procedure salva_ini;
-    procedure  ler_ini;
+    procedure ler_ini;
   public
 
   end;
@@ -40,7 +40,8 @@ var
   frmconfigurabanco: Tfrmconfigurabanco;
 
 implementation
-uses uprincipal  ;
+
+uses uprincipal, uDMconexao;
 
 {$R *.lfm}
 
@@ -49,6 +50,18 @@ uses uprincipal  ;
 procedure Tfrmconfigurabanco.btnSALVAClick(Sender: TObject);
 begin
   salva_ini;
+
+  // aplicar no DataModule
+  DataModule1.AplicarConfiguracoes(
+     edtSERVER.Text,
+     edtBANCO.Text,
+     edtUSER.Text,
+     edtSENHA.Text,
+     StrToIntDef(edtPORTA.Text, 3306)
+  );
+
+  ShowMessage('Configurações salvas com sucesso!');
+  Close;
 end;
 
 procedure Tfrmconfigurabanco.FormShow(Sender: TObject);
@@ -58,15 +71,15 @@ end;
 
 procedure Tfrmconfigurabanco.salva_ini;
 var
-  arqINI : TIniFile  ;
+  arqINI: TIniFile;
 begin
-  arqINI := TIniFIle.Create(cfg_arqINI);
+  arqINI := TIniFile.Create(cfg_arqINI);
   try
-    arqINI.WriteString('ConexaoDB','Banco',edtBANCO.Text);
-    arqINI.WriteString('ConexaoDB','Server',edtSERVER.Text);
-    arqINI.WriteString('ConexaoDB','Porta', IntToStr(StrToIntDef(edtPORTA.Text, 3306)));
-    arqINI.WriteString('ConexaoDB','User',edtUSER.Text);
-    arqINI.WriteString('ConexaoDB','Senha',edtSENHA.Text);
+    arqINI.WriteString('ConexaoDB','Banco', edtBANCO.Text);
+    arqINI.WriteString('ConexaoDB','Server', edtSERVER.Text);
+    arqINI.WriteInteger('ConexaoDB','Porta', StrToIntDef(edtPORTA.Text, 3306));
+    arqINI.WriteString('ConexaoDB','User', edtUSER.Text);
+    arqINI.WriteString('ConexaoDB','Senha', edtSENHA.Text);
   finally
     arqINI.Free;
   end;
@@ -74,18 +87,18 @@ end;
 
 procedure Tfrmconfigurabanco.ler_ini;
 var
-  arqINI :TIniFile;
+  arqINI: TIniFile;
 begin
-   arqINI := TIniFile.Create(cfg_arqINI) ;
-   try
-     edtBANCO.Text := arqINI.ReadString ('ConexaoDB','Banco','');
-     edtSERVER.Text := arqINI.ReadString ('ConexaoDB','Server','');
-     edtPORTA.Text := IntToStr(arqINI.ReadInteger('ConexaoDB', 'Porta', 3306));
-     edtUSER.Text := arqINI.ReadString ('ConexaoDB','User','');
-     edtSENHA.Text := arqINI.ReadString ('ConexaoDB','Senha','');
-
-   finally
-   end;
+  arqINI := TIniFile.Create(cfg_arqINI);
+  try
+    edtBANCO.Text  := arqINI.ReadString('ConexaoDB','Banco','');
+    edtSERVER.Text := arqINI.ReadString('ConexaoDB','Server','127.0.0.1');
+    edtPORTA.Text  := IntToStr(arqINI.ReadInteger('ConexaoDB','Porta',3306));
+    edtUSER.Text   := arqINI.ReadString('ConexaoDB','User','root');
+    edtSENHA.Text  := arqINI.ReadString('ConexaoDB','Senha','');
+  finally
+    arqINI.Free;
+  end;
 end;
 
 end.
