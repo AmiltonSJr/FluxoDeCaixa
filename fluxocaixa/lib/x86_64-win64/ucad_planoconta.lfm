@@ -1,0 +1,162 @@
+inherited frmcad_planoconta: Tfrmcad_planoconta
+  Width = 462
+  Caption = 'Cadastro Plano de Conta'
+  ClientWidth = 462
+  inherited pnpTITULO: TPanel
+    Width = 462
+    Caption = 'Cadastro Plano de Contas'
+  end
+  inherited PageControl1: TPageControl
+    Width = 462
+    ActivePage = tsPESQUISA
+    TabIndex = 0
+    OnChange = PageControl1Change
+    inherited tsPESQUISA: TTabSheet
+      ClientWidth = 454
+      inherited Panel1: TPanel
+        Width = 454
+        BevelOuter = bvNone
+        ClientWidth = 454
+        inherited edPESQUISA: TEdit
+          OnChange = edPESQUISAChange
+        end
+        inherited btnPESQUISA: TSpeedButton
+          OnClick = btnPESQUISAClick
+        end
+      end
+      object DBGrid1: TDBGrid[1]
+        Left = 0
+        Height = 210
+        Top = 50
+        Width = 454
+        Align = alClient
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = 'CÓDIGO'
+            Width = 70
+            FieldName = 'id_planos'
+          end        
+          item
+            Title.Caption = 'DESCRIÇÃO'
+            Width = 250
+            FieldName = 'descricao'
+          end        
+          item
+            Title.Caption = 'TIPO'
+            Width = 100
+            FieldName = 'tipo'
+          end>
+        DataSource = dsPESQ
+        Font.CharSet = ANSI_CHARSET
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete, dgDisableInsert]
+        ParentFont = False
+        TabOrder = 1
+      end
+    end
+    inherited tsCADASTRO: TTabSheet
+      ClientWidth = 454
+      inherited pnpRODAPE: TPanel
+        Width = 454
+        ClientWidth = 454
+      end
+      object lblCodigo: TLabel[1]
+        Left = 24
+        Height = 15
+        Top = 24
+        Width = 42
+        Caption = 'Código:'
+      end
+      object edtCODIGO: TEdit[2]
+        Left = 24
+        Height = 23
+        Top = 40
+        Width = 80
+        NumbersOnly = True
+        TabOrder = 1
+      end
+      object lblDescricao: TLabel[3]
+        Left = 24
+        Height = 15
+        Top = 80
+        Width = 54
+        Caption = 'Descrição:'
+      end
+      object lblTIpo: TLabel[4]
+        Left = 24
+        Height = 15
+        Top = 128
+        Width = 26
+        Caption = 'Tipo:'
+      end
+      object edtDESCRICAO: TEdit[5]
+        Left = 24
+        Height = 23
+        Top = 96
+        Width = 352
+        CharCase = ecUppercase
+        TabOrder = 2
+      end
+      object cmbTipo: TComboBox[6]
+        Left = 24
+        Height = 23
+        Top = 144
+        Width = 80
+        ItemHeight = 15
+        Items.Strings = (
+          'C'
+          'D'
+        )
+        Style = csDropDownList
+        TabOrder = 3
+        OnChange = cmbTipoChange
+      end
+    end
+  end
+  object qrPESQ: TZQuery[2]
+    Connection = TabGlobal.conexao
+    SQL.Strings = (
+      'select * from planos'
+    )
+    Params = <>
+    Left = 136
+    Top = 209
+    object qrPESQid_planos: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'id_planos'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrPESQdescricao: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'descricao'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 80
+    end
+    object qrPESQtipo: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'tipo'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+  end
+  object dsPESQ: TDataSource[3]
+    DataSet = qrPESQ
+    Left = 264
+    Top = 209
+  end
+end

@@ -47,6 +47,7 @@ object frmPrincipal: TfrmPrincipal
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
+      OnClick = btnPLANOSClick
     end
     object btnLCTO: TSpeedButton
       Left = 16

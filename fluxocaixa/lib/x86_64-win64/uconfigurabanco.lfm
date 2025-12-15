@@ -54,6 +54,7 @@ object frmconfigurabanco: Tfrmconfigurabanco
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
+    OnClick = btnCANCELAClick
   end
   object Label2: TLabel
     Left = 32
@@ -152,5 +153,6 @@ object frmconfigurabanco: Tfrmconfigurabanco
     EchoMode = emPassword
     PasswordChar = '*'
     TabOrder = 4
+    OnChange = edtSENHAChange
   end
 end

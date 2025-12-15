@@ -6,9 +6,19 @@ object TabGlobal: TTabGlobal
   Width = 150
   object conexao: TZConnection
     ControlsCodePage = cCP_UTF8
+    Properties.Strings = (
+      'RawStringEncoding=DB_CP'
+    )
+    BeforeConnect = conexaoBeforeConnect
+    AfterConnect = conexaoAfterConnect
     DisableSavepoints = False
-    Port = 0
+    HostName = 'localhost'
+    Port = 3307
+    Database = 'flluxo_caixa'
+    User = 'root'
+    Password = 'Link123@'
     Protocol = 'mariadb'
+    LibraryLocation = 'C:\Users\Dell\Documents\Projetos\fluxocaixa\libmariadb.dll'
     Left = 64
     Top = 56
   end

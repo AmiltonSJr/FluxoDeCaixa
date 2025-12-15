@@ -6,23 +6,24 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
-  ComCtrls, StdCtrls;
+  ComCtrls, StdCtrls, utabela;
 
 type
+  TCliqueBotao =(cbIncluir ,cbAlterar ,cbNome);
 
   { Tfrmcad_padrao }
 
   Tfrmcad_padrao = class(TForm)
     btnALTERA: TSpeedButton;
     btnAPAGA: TSpeedButton;
-    btnSALVA: TSpeedButton;
     btnCANCELA: TSpeedButton;
+    btnINCLUIR: TSpeedButton;
+    btnSALVA: TSpeedButton;
     edPESQUISA: TEdit;
     PageControl1: TPageControl;
     Panel1: TPanel;
-    pnpTITULO: TPanel;
     pnpRODAPE: TPanel;
-    btnINCLUIR: TSpeedButton;
+    pnpTITULO: TPanel;
     btnPESQUISA: TSpeedButton;
     tsPESQUISA: TTabSheet;
     tsCADASTRO: TTabSheet;
@@ -41,6 +42,7 @@ type
 
 var
   frmcad_padrao: Tfrmcad_padrao;
+  cliqueBotao : TCliqueBotao;
 
 implementation
 
@@ -56,16 +58,19 @@ end;
 procedure Tfrmcad_padrao.btnINCLUIRClick(Sender: TObject);
 begin
   botao_edicao(true);
+  cliqueBotao := cbIncluir;
 end;
 
 procedure Tfrmcad_padrao.btnSALVAClick(Sender: TObject);
 begin
   botao_edicao(false);
+
 end;
 
 procedure Tfrmcad_padrao.btnALTERAClick(Sender: TObject);
 begin
   botao_edicao(true);
+  cliqueBotao:= cbAlterar;
 end;
 
 procedure Tfrmcad_padrao.btnAPAGAClick(Sender: TObject);
@@ -80,11 +85,11 @@ end;
 
 procedure Tfrmcad_padrao.botao_edicao(lFLAG: boolean);
 begin
-    btnINCLUIR.Visible:=not lFLAG;
-    btnALTERA.Visible:=not lFLAG;
-    btnAPAGA.Visible:=not lFLAG;
-    btnSALVA.Visible:=not lFLAG;
-    btnCANCELA.Visible:=not lFLAG;
+    btnINCLUIR.Visible:=   not lFLAG;
+    btnALTERA.Visible :=   not lFLAG;
+    btnAPAGA.Visible  :=   not lFLAG;
+    btnSALVA.Visible  :=       lFLAG;
+    btnCANCELA.Visible:=       lFLAG;
 end;
 
 end.

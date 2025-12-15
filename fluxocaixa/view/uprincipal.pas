@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Buttons;
+  Buttons, ucad_planoconta;
 
 type
 
@@ -24,6 +24,7 @@ type
 
     procedure btnCFGClick(Sender: TObject);
     procedure btnCONTASClick(Sender: TObject);
+    procedure btnPLANOSClick(Sender: TObject);
     procedure btnSAIRClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -33,11 +34,16 @@ type
 var
   frmPrincipal: TfrmPrincipal;
   cfg_arqINI: String;
+  cfg_banco, cfg_servidor, cfg_usuario, cfg_senha :String;
+  cfg_porta: integer;
+  frmcad_planoconta: Tfrmcad_planoconta;
+
+
 
 implementation
 
 uses
-  uconfigurabanco, ucad_padrao, uDMconexao, IniFiles;
+  uconfigurabanco, ucad_padrao, utabela, IniFiles;
 
 {$R *.lfm}
 
@@ -45,6 +51,7 @@ uses
 
 procedure TfrmPrincipal.btnSAIRClick(Sender: TObject);
 begin
+  ShowMessage('Até breve');
   Application.Terminate;
 end;
 
@@ -68,15 +75,37 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.btnPLANOSClick(Sender: TObject);
+begin
+  frmcad_planoconta := Tfrmcad_planoconta.Create(self);
+  try
+   frmcad_planoconta.ShowModal;
+  finally
+    FreeAndNil(frmcad_planoconta);
+  end;
+end;
+
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 var
   arqINI: TIniFile;
   banco, server, user, senha: String;
   porta: Integer;
 begin
+  {$IFDEF WINDOWS}
+    // Formatação de moeda
+    CurrencyString   := 'R$';
+    CurrencyFormat   := 2;
+    DecimalSeparator := ',';
+    ThousandSeparator := '.';
+
+    // Formatação de datas
+    DateSeparator   := '/';
+    ShortDateFormat := 'dd/mm/yyyy';
+  {$ENDIF}
+
   cfg_arqINI := ChangeFileExt(ParamStr(0), '.ini');
 
-  DataModule1 := TDataModule1.Create(Self);
+  TabGlobal := TTabGlobal.Create(Self);
 
   if FileExists(cfg_arqINI) then
   begin
@@ -88,7 +117,8 @@ begin
       user   := arqINI.ReadString('ConexaoDB','User','root');
       senha  := arqINI.ReadString('ConexaoDB','Senha','1234');
 
-      DataModule1.AplicarConfiguracoes(server, banco, user, senha, porta);
+      TabGlobal.AplicarConfiguracoes(server, banco, user, senha, porta);
+
 
     finally
       arqINI.Free;

@@ -10,13 +10,14 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, zcomponent, uprincipal, uconfigurabanco, ucad_padrao, utabela;
+  Forms, zcomponent, uprincipal, uconfigurabanco, ucad_padrao, utabela, 
+ucad_planoconta;
 
 {$R *.res}
 
 begin
   RequireDerivedFormResource := True;
-  Application.Scaled := True;
+  Application.Scaled:=True;
 
   {$PUSH}{$WARN 5044 OFF}
   Application.MainFormOnTaskbar := True;
@@ -24,7 +25,6 @@ begin
 
   Application.Initialize;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(Tfrmcad_padrao, frmcad_padrao);
   Application.CreateForm(TTabGlobal, TabGlobal);
   Application.Run;
 end.

@@ -28,7 +28,9 @@ type
     Label6: TLabel;
     Shape1: TShape;
 
+    procedure btnCANCELAClick(Sender: TObject);
     procedure btnSALVAClick(Sender: TObject);
+    procedure edtSENHAChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     procedure salva_ini;
@@ -41,7 +43,7 @@ var
 
 implementation
 
-uses uprincipal, uDMconexao;
+uses uprincipal, utabela;
 
 {$R *.lfm}
 
@@ -51,16 +53,26 @@ procedure Tfrmconfigurabanco.btnSALVAClick(Sender: TObject);
 begin
   salva_ini;
 
-  DataModule1.AplicarConfiguracoes(
+  TabGlobal.AplicarConfiguracoes(
      edtSERVER.Text,
      edtBANCO.Text,
      edtUSER.Text,
      edtSENHA.Text,
-     StrToIntDef(edtPORTA.Text, 3306)
+     StrToIntDef(edtPORTA.Text, 3307)
   );
 
   ShowMessage('Configurações salvas com sucesso!');
   Close;
+end;
+
+procedure Tfrmconfigurabanco.edtSENHAChange(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmconfigurabanco.btnCANCELAClick(Sender: TObject);
+begin
+  ShowMessage('Operação cancelada');
 end;
 
 procedure Tfrmconfigurabanco.FormShow(Sender: TObject);
@@ -76,7 +88,7 @@ begin
   try
     arqINI.WriteString('ConexaoDB','Banco', edtBANCO.Text);
     arqINI.WriteString('ConexaoDB','Server', edtSERVER.Text);
-    arqINI.WriteInteger('ConexaoDB','Porta', StrToIntDef(edtPORTA.Text, 3306));
+    arqINI.WriteInteger('ConexaoDB','Porta', StrToIntDef(edtPORTA.Text, 3307));
     arqINI.WriteString('ConexaoDB','User', edtUSER.Text);
     arqINI.WriteString('ConexaoDB','Senha', edtSENHA.Text);
   finally
@@ -92,7 +104,7 @@ begin
   try
     edtBANCO.Text  := arqINI.ReadString('ConexaoDB','Banco','');
     edtSERVER.Text := arqINI.ReadString('ConexaoDB','Server','127.0.0.1');
-    edtPORTA.Text  := IntToStr(arqINI.ReadInteger('ConexaoDB','Porta',3306));
+    edtPORTA.Text  := IntToStr(arqINI.ReadInteger('ConexaoDB','Porta',3307));
     edtUSER.Text   := arqINI.ReadString('ConexaoDB','User','root');
     edtSENHA.Text  := arqINI.ReadString('ConexaoDB','Senha','');
   finally
